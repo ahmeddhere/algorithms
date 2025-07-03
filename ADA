@@ -1,0 +1,72 @@
+
+
+# Max Flow & Bipartite Matching
+
+## 📘 Overview
+
+This repository explains and implements two fundamental graph algorithms:
+
+* **Max Flow (Maximum Flow Problem)**
+* **Bipartite Matching (using Max Flow Reduction)**
+
+These algorithms are widely used in real-world problems such as network routing, job assignment, and resource allocation.
+
+---
+
+## 📌 1. Max Flow
+
+### 🔍 What is Max Flow?
+
+The **Max Flow** problem involves finding the maximum possible flow from a **source node** to a **sink node** in a flow network such that the flow on each edge does not exceed the edge’s capacity.
+
+### ✅ Use Cases
+
+* Internet data routing
+* Water or traffic flow modeling
+* Project task scheduling
+* Airline scheduling
+
+### ⚙️ Algorithm Used
+
+* **Edmonds-Karp Algorithm (BFS based Ford-Fulkerson)**
+
+  * Time Complexity: `O(VE²)`
+* **Dinic’s Algorithm** *(optional enhancement)*
+
+  * Time Complexity: `O(V²E)`
+
+---
+
+## 📌 2. Bipartite Matching
+
+### 🔍 What is Bipartite Matching?
+
+A **Bipartite Graph** consists of two disjoint sets (U and V), and every edge connects a node from U to a node from V. A **maximum bipartite matching** finds the largest number of matches between these sets such that no two edges share an endpoint.
+
+### 🔄 Max Flow Reduction
+
+The bipartite matching problem can be **transformed into a Max Flow problem**:
+
+1. Add a super source node `S`, and connect it to all nodes in set U.
+2. Add a super sink node `T`, and connect all nodes in set V to `T`.
+3. Assign all edges a capacity of 1.
+4. Run the Max Flow algorithm from `S` to `T`. The maximum flow equals the maximum matching.
+
+### ✅ Use Cases
+
+* Job assignment (people → jobs)
+* Course allocation (students → subjects)
+* Stable matching problems
+
+---
+
+## 🧠 Example: Job Assignment
+
+Given:
+
+* Applicants: A1, A2, A3
+* Jobs: J1, J2
+* Compatibility edges: A1→J1, A2→J1, A3→J2
+
+Using Bipartite Matching (via Max Flow), we determine the maximum number of applicants who can be assigned to a job.
+
